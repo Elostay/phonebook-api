@@ -82,7 +82,7 @@ export const updateFavorite = async (req, res, next) => {
     const keys = Object.keys(req.body);
 
     if (keys.length === 0) {
-      throw HttpError(400, "Body must have at least one field");
+      throw HttpError(400, "missing field favorite");
     }
 
     const { id } = req.params;
