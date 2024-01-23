@@ -11,9 +11,7 @@ export const createContactSchema = Joi.object({
   phone: Joi.string()
     .required()
     .messages({ "any.required": "Missing required phone field" }),
-  favorite: Joi.boolean()
-    .required()
-    .messages({ "any.required": "Missing required favorite field" }),
+  favorite: Joi.boolean(),
 });
 
 export const updateContactSchema = Joi.object({
