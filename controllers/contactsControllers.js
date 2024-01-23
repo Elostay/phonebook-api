@@ -3,7 +3,7 @@ import { Contact } from "../db/contact.js";
 
 export const getAllContacts = async (req, res, next) => {
   try {
-    const result = await Contact.find({}, "title email phone favorite");
+    const result = await Contact.find({}, "name email phone favorite");
     res.status(200).json(result);
   } catch (error) {
     next(error);
