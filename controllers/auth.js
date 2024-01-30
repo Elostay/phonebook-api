@@ -20,8 +20,10 @@ export const register = async (req, res, next) => {
     const newUser = await User.create({ ...req.body, password: hasPassword });
 
     res.status(201).json({
-      email: newUser.email,
-      subscription: newUser.subscription,
+      user: {
+        email: newUser.email,
+        subscription: newUser.subscription,
+      },
     });
   } catch (error) {
     next(error);
@@ -49,6 +51,10 @@ export const login = async (req, res, next) => {
     await User.findByIdAndUpdate(user._id, { token });
     res.status(200).json({
       token,
+      user: {
+        email: user.email,
+        subscription: user.subscription,
+      },
     });
   } catch (error) {
     next(error);
@@ -70,7 +76,7 @@ export const logout = async (req, res, next) => {
     const { _id } = req.user;
     await User.findByIdAndUpdate(_id, { token: "" });
 
-    res.json({ message: "Logout success" });
+    res.status(204).json();
   } catch (error) {
     next(error);
   }
