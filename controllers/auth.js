@@ -91,7 +91,7 @@ export const logout = async (req, res, next) => {
     next(error);
   }
 };
-export const updateAvatar = async (req, res) => {
+export const updateAvatar = async (req, res, next) => {
   try {
     const { _id } = req.user;
     const { path: tempUpload, originalname } = req.file;
