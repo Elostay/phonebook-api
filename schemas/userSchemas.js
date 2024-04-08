@@ -9,8 +9,8 @@ export const registerSchema = Joi.object({
     "string.email": "Email must be a valid address",
     "any.required": "Email is required",
   }),
-  subscription: Joi.string().valid("starter", "pro", "business").messages({
-    "any.only": "Subscription has only 3 values: starter, pro, business",
+  name: Joi.string().required().messages({
+    "any.required": "Name is required",
   }),
 });
 
@@ -21,17 +21,4 @@ export const loginSchema = Joi.object({
   email: Joi.string().email().required().messages({
     "any.required": "Enter email",
   }),
-  subscription: Joi.string().valid("starter", "pro", "business").messages({
-    "any.only": "Subscription has only 3 values: starter, pro, business",
-  }),
-});
-
-export const updateSubscriptionSchema = Joi.object({
-  subscription: Joi.string()
-    .valid("starter", "pro", "business")
-    .required()
-    .messages({
-      "any.required": "Subscription is required",
-      "any.only": "Subscription has only 3 values: starter, pro, business",
-    }),
 });
